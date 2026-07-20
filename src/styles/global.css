@@ -1,1 +1,32 @@
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/700.css";
+
+@import "@fontsource/ibm-plex-serif/400.css";
+@import "@fontsource/ibm-plex-serif/700.css";
+
 @import "tailwindcss";
+
+@theme {
+  --color-bg: #141312;
+  --color-text: #e7e2d8;
+  --color-text-secondary: #b8b0a3;
+  --color-text-muted: #817a70;
+  --color-accent: #4ea1ff;
+  --color-border: #2b2926;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "IBM Plex Serif", serif;
+  --font-mono: "Cascadia Code", monospace;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+}
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
