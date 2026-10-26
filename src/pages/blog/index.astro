@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getPublishedPosts } from "../../lib/posts";
+
+const posts = (await getPublishedPosts()).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Base
+  title="Blog"
+  description="Posts by Ryan Toh on software, systems, and whatever else."
+>
+  {
+    posts.length === 0 ? (
+      <p class="font-mono text-text-muted">blog compiling...</p>
+    ) : (
+      <ul class="space-y-7">
+        {posts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.id}/`}
+              class="text-body transition-colors duration-150 hover:text-accent"
+            >
+              {post.data.title}
+            </a>
+            <p class="mt-1 text-meta text-text-muted">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>
